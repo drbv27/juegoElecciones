@@ -140,7 +140,7 @@ function App() {
     Swal.fire({
       title: 'Genial!',
       text: 'Así debes votar el 29 de Octubre.',
-      imageUrl: './confetti-29.gif',
+      imageUrl: './Fredy-Gana-circular-_1_.gif',
       imageWidth: 400,
       imageHeight: 200,
       imageAlt: 'Custom image',
@@ -171,28 +171,28 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Elecciones 2023</h1>
-      <div className="imagenes">
+      <h1 className="font-extrabold text-3xl">VOTO PARA CONCEJO MUNICIPAL DE</h1>
+      <h1 className="font-bold text-3xl">MEDELLIN - ANTIOQUIA</h1>
+      <h1 className="font-extrabold text-3xl text-[#BA3330] mb-10">MARCAR MÁS DE UNA LISTA ANULA EL VOTO</h1>
+      <div className="imagenes flex justify-between">
         {imagenes.map((imagen,index) => (
-          <div key={imagen.nombre} className="flex border m-4" style={{width:"38vw"}}>
-            <div style={{width:"40%"}}>
-              <button
+          <div key={imagen.nombre} className="flex border-4 border-black mb-14 p-[0.5vw]" style={{width:"30vw", height:"12vw"}}>
+            <div style={{width:"39%"}}>
+              <button 
                 className={imagen.nombre === imagenCorrecta.nombre ? "correcta" : "incorrecta"}
-                onClick={() => handlePartido(imagen)}
-              >
+                onClick={() => handlePartido(imagen)}>
                 <div >
                   <img src={imagen.imagen} alt={imagen.nombre} style={{width:"100%"}} id={imagen.nombre}/>
                 </div>
               </button>
             </div>
-            <div style={{width:"64%"}} className="flex flex-wrap">
-            {index !==3 && candidatos.map((candidato) => (
+            <div style={{width:"61%"}} className="flex flex-wrap">
+            {index !==8 &&  index !==10 &&  index !==13 && candidatos.map((candidato) => (
                 <button
-                  className="border rounded w-8 mx-1"
+                  className="font-sans font-bold text-[1.4vw] border-2 border-black rounded-lg w-[3.26vw] h-[1.9vw] m-[0.1vw]"
                   onClick={() => handleCandidato(`${imagen.nombre}${candidato}`)}
                   key={candidato}
-                  id={`${imagen.nombre}${candidato}`}
-                >
+                  id={`${imagen.nombre}${candidato}`}>
                   {candidato}
                 </button>
               ))}
