@@ -73,21 +73,110 @@ const initialState = [
   },
 ];
 
+const initialStateNum = [ {
+  nombre: "1",
+  imagen: "./1.png",
+},
+{
+  nombre: "2",
+  imagen: "./2.png",
+},
+{
+  nombre: "3",
+  imagen: "./3.png",
+},
+{
+  nombre: "4",
+  imagen: "./4.png",
+},
+{
+  nombre: "5",
+  imagen: "./5.png",
+},
+{
+  nombre: "SIX",
+  imagen: "./6.png",
+},
+{
+  nombre: "7",
+  imagen: "./7.png",
+},
+{
+  nombre: "8",
+  imagen: "./8.png",
+},
+{
+  nombre: "9",
+  imagen: "./9.png",
+},
+{
+  nombre: "10",
+  imagen: "./10.png",
+},
+{
+  nombre: "11",
+  imagen: "./11.png",
+},
+{
+  nombre: "12",
+  imagen: "./12.png",
+},
+{
+  nombre: "13",
+  imagen: "./13.png",
+},
+{
+  nombre: "14",
+  imagen: "./14.png",
+},
+{
+  nombre: "15",
+  imagen: "./15.png",
+},
+{
+  nombre: "16",
+  imagen: "./16.png",
+},
+{
+  nombre: "17",
+  imagen: "./17.png",
+},
+{
+  nombre: "18",
+  imagen: "./18.png",
+},
+{
+  nombre: "19",
+  imagen: "./19.png",
+},
+{
+  nombre: "20",
+  imagen: "./20.png",
+},
+{
+  nombre: "21",
+  imagen: "./21.png",
+},
+];
 
 
 function App() {
   const [imagenes, setImagenes] = useState(initialState);
-
-  const candidatos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+  const [numeros, setNumeros] = useState(initialStateNum);
+  const [numeros2, setNumeros2] = useState(initialStateNum);
 
   const [imagenCorrecta, setImagenCorrecta] = useState({
     nombre: "tepertenece",
     imagen: "./Tepertenece.png",
   });
 
+  const [numCorrecto, setNumCorrecto] = useState({
+    nombre: "SIX",
+    imagen: "./6.png",
+  });
+
   const [candidatoOk, setCandidatoOk] = useState(null);
   const [paridoOk, setPartidoOk] = useState(null);
-
 
   const handlePartido = (imagenSeleccionada) => {
     if(imagenSeleccionada.nombre === imagenCorrecta.nombre){
@@ -99,7 +188,7 @@ function App() {
         text: 'Ese es nuestro partido, no olvides marcar el candidato!',
       })
       const imagenCorrectaElement = document.querySelector(`#${imagenCorrecta.nombre}`);
-      console.log(`[data-imagen="${imagenCorrecta.nombre}"]`)
+      console.log(`[data-imagen="${imagenCorrecta}"]`)
       console.log(imagenCorrectaElement)
       imagenCorrectaElement.src = "./Tepertenecex.png";
     }
@@ -112,9 +201,9 @@ function App() {
       })
     }
     }
-  const handleCandidato = (candidatoSeleccionado) => {
-    console.log(candidatoSeleccionado)
-    if(candidatoSeleccionado === 'tepertenece6'){
+  const handleCandidato = (candidatoSeleccionado, imagenSeleccionada) => {
+    console.log(candidatoSeleccionado, imagenSeleccionada)
+    if(candidatoSeleccionado.nombre === numCorrecto.nombre && imagenSeleccionada.nombre === imagenCorrecta.nombre){
       setCandidatoOk(true)
       console.log('correcto')
       Swal.fire({
@@ -122,6 +211,10 @@ function App() {
         title: 'Perfecto',
         text: 'Ese es nuestro candidato, no olvides marcar el partido !',
       })
+      const numCorrectaElement = document.querySelector(`#${numCorrecto.nombre}`);
+      console.log(`[data-imagen="${numCorrecto.nombre}"]`)
+      console.log(numCorrectaElement)
+      numCorrectaElement.src = "./6Marcado.png";
     }
     else{
       console.log('incorrecto')
@@ -141,13 +234,13 @@ function App() {
       title: 'Genial!',
       text: 'Así debes votar el 29 de Octubre.',
       imageUrl: './Fredy-Gana-circular-_1_.gif',
-      imageWidth: 400,
+      imageWidth: 350,
       imageHeight: 200,
       imageAlt: 'Custom image',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Jugar otra vez?',
+      confirmButtonText: '¿Jugar otra vez?',
       cancelButtonText: 'Salir'
     }).then((result) => {
       console.log(result)
@@ -161,6 +254,12 @@ function App() {
         console.log(`[data-imagen="${imagenCorrecta.nombre}"]`)
         console.log(imagenCorrectaElement)
         imagenCorrectaElement.src = "./Tepertenece.png";
+        
+        const numCorrectaElement = document.querySelector(`#${numCorrecto.nombre}`);
+        console.log(`[data-imagen="${numCorrecto.nombre}"]`)
+        console.log(numCorrectaElement)
+        numCorrectaElement.src = "./6.png";
+
       }else{
         window.location.href = "https://fredycardenasconcejal.com/"
       }
@@ -174,7 +273,8 @@ function App() {
       <h1 className="font-extrabold text-3xl max-md:text-sm">VOTO PARA CONCEJO MUNICIPAL DE</h1>
       <h1 className="font-bold text-3xl max-md:text-sm  ">MEDELLIN - ANTIOQUIA</h1>
       <h1 className="font-extrabold text-3xl text-[#BA3330] mb-10 max-md:text-sm">MARCAR MÁS DE UNA LISTA ANULA EL VOTO</h1>
-      <div className="imagenes flex justify-between">
+      <div className="imagenes flex justify-between mt-16">
+        
         {imagenes.map((imagen,index) => (
           <div key={imagen.nombre} className="flex border-4 border-black mb-14 p-[0.5vw] w-[30vw] max-md:w-[100vw]">
             <div style={{width:"39%"}}>
@@ -186,7 +286,32 @@ function App() {
                 </div>
               </button>
             </div>
+          
             <div style={{width:"61%"}} className="flex flex-wrap">
+            {index <2  && numeros2.map((numero2,index) => (
+                <button key={numero2.nombre}
+                  className="correcta font-sans font-bold text-[1.4vw] border-2 border-black rounded-lg w-[3.26vw] h-[1.9vw] m-[0.1vw] max-md:w-[8.6vw] max-md:text-[4vw] max-md:h-[6vw] max-md:m-[0.5vw] max-md:rounded-base " 
+                  onClick={() => handleCandidato(numero2, imagen)}>
+                  <div >
+                    <img src={numero2.imagen} alt={numero2.nombre} style={{width:"100%"}} id={numero2.nombre+"1"}/>
+                  </div>
+                </button>
+               ))}
+
+            {index !==0 &&  index !==1 &&index !==8 &&  index !==10 &&  index !==13 && numeros.map((numero,index) => (
+                <button key={numero.nombre}
+                  className={numero.nombre === numCorrecto.nombre ? "correcta font-sans font-bold text-[1.4vw] border-2 border-black rounded-lg w-[3.26vw] h-[1.9vw] m-[0.1vw] max-md:w-[8.6vw] max-md:text-[4vw] max-md:h-[6vw] max-md:m-[0.5vw] max-md:rounded-base " 
+                                                                  : "incorrecta font-sans font-bold text-[1.4vw] border-2 border-black rounded-lg w-[3.26vw] h-[1.9vw] m-[0.1vw] max-md:w-[8.6vw] max-md:text-[4vw] max-md:h-[6vw] max-md:m-[0.5vw] max-md:rounded-base "}
+                  onClick={() => handleCandidato(numero, imagen)}>
+                  <div >
+                    <img src={numero.imagen} alt={numero.nombre} style={{width:"100%"}} id={numero.nombre}/>
+                  </div>
+                </button>
+               ))}
+            </div>
+
+
+            {/* <div style={{width:"61%"}} className="flex flex-wrap">
             {index !==8 &&  index !==10 &&  index !==13 && candidatos.map((candidato) => (
                 <button
                   className="font-sans font-bold text-[1.4vw] border-2 border-black rounded-lg w-[3.26vw] h-[1.9vw] m-[0.1vw]
@@ -197,8 +322,9 @@ function App() {
                   {candidato}
                 </button>
               ))}
+            </div> */}
 
-            </div>
+
           </div>
         ))}
       </div>
