@@ -171,12 +171,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="font-extrabold text-3xl">VOTO PARA CONCEJO MUNICIPAL DE</h1>
-      <h1 className="font-bold text-3xl">MEDELLIN - ANTIOQUIA</h1>
-      <h1 className="font-extrabold text-3xl text-[#BA3330] mb-10">MARCAR MÁS DE UNA LISTA ANULA EL VOTO</h1>
+      <h1 className="font-extrabold text-3xl max-md:text-sm">VOTO PARA CONCEJO MUNICIPAL DE</h1>
+      <h1 className="font-bold text-3xl max-md:text-sm  ">MEDELLIN - ANTIOQUIA</h1>
+      <h1 className="font-extrabold text-3xl text-[#BA3330] mb-10 max-md:text-sm">MARCAR MÁS DE UNA LISTA ANULA EL VOTO</h1>
       <div className="imagenes flex justify-between">
         {imagenes.map((imagen,index) => (
-          <div key={imagen.nombre} className="flex border-4 border-black mb-14 p-[0.5vw]" style={{width:"30vw", height:"12vw"}}>
+          <div key={imagen.nombre} className="flex border-4 border-black mb-14 p-[0.5vw] w-[30vw] max-md:w-[100vw]">
             <div style={{width:"39%"}}>
               <button 
                 className={imagen.nombre === imagenCorrecta.nombre ? "correcta" : "incorrecta"}
@@ -189,7 +189,8 @@ function App() {
             <div style={{width:"61%"}} className="flex flex-wrap">
             {index !==8 &&  index !==10 &&  index !==13 && candidatos.map((candidato) => (
                 <button
-                  className="font-sans font-bold text-[1.4vw] border-2 border-black rounded-lg w-[3.26vw] h-[1.9vw] m-[0.1vw]"
+                  className="font-sans font-bold text-[1.4vw] border-2 border-black rounded-lg w-[3.26vw] h-[1.9vw] m-[0.1vw]
+                              max-md:w-[8.6vw] max-md:text-[4vw] max-md:h-[6vw] max-md:m-[0.5vw] max-md:rounded-base "
                   onClick={() => handleCandidato(`${imagen.nombre}${candidato}`)}
                   key={candidato}
                   id={`${imagen.nombre}${candidato}`}>
