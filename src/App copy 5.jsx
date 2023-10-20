@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 const initialState = [
   {
     nombre: "juntos",
-    imagen: "./Juntos1.png",
+    imagen: "./Juntos.png",
   },
   {
     nombre: "tepertenece",
@@ -13,63 +13,63 @@ const initialState = [
   },
   {
     nombre: "renace",
-    imagen: "./Renace1.png",
+    imagen: "./Renace.png",
   },
   {
     nombre: "verde",
-    imagen: "./Verde1.png",
+    imagen: "./Verde.png",
   },
   {
     nombre: "nosune",
-    imagen: "./NosUne1.png",
+    imagen: "./NosUne.png",
   },
   {
     nombre: "historico",
-    imagen: "./PactoHistorico1.png",
+    imagen: "./PactoHistorico.png",
   },
   {
     nombre: "conservador",
-    imagen: "./Convervador1.png",
+    imagen: "./Convervador.png",
   },
   {
     nombre: "independientes",
-    imagen: "./Independientes1.png",
+    imagen: "./Independientes.png",
   },
   {
     nombre: "fuerzapaz",
-    imagen: "./FuezaPaz1.png",
+    imagen: "./FuezaPaz.png",
   },
   {
     nombre: "asi",
-    imagen: "./ASi1.png",
+    imagen: "./ASi.png",
   },
   {
     nombre: "centrod",
-    imagen: "./CentroDemocratico1.png",
+    imagen: "./CentroDemocratico.png",
   },
   {
     nombre: "gente",
-    imagen: "./Gente1.png",
+    imagen: "./Gente.png",
   },
   {
     nombre: "liberal",
-    imagen: "./Liberal1.png",
+    imagen: "./Liberal.png",
   },
   {
     nombre: "decente",
-    imagen: "./PactoDecente1.png",
+    imagen: "./PactoDecente.png",
   },
   {
     nombre: "salvacion",
-    imagen: "./Salvacion1.png",
+    imagen: "./Salvacion.png",
   },
   {
     nombre: "ecologista",
-    imagen: "./Ecologista1.png",
+    imagen: "./Ecologista.png",
   },
   {
     nombre: "creemos",
-    imagen: "./Creemos1.png",
+    imagen: "./Creemos.png",
   },
 ];
 
@@ -94,7 +94,7 @@ const initialStateNum = [ {
   imagen: "./5.png",
 },
 {
-  nombre: "6",
+  nombre: "SIX",
   imagen: "./6.png",
 },
 {
@@ -171,7 +171,7 @@ function App() {
   });
 
   const [numCorrecto, setNumCorrecto] = useState({
-    nombre: "6",
+    nombre: "SIX",
     imagen: "./6.png",
   });
 
@@ -188,8 +188,8 @@ function App() {
         text: 'Estas a un paso de logralo!',
       })
       const imagenCorrectaElement = document.querySelector(`#${imagenCorrecta.nombre}`);
-/*       console.log(`[data-imagen="${imagenCorrecta}"]`)
-      console.log(imagenCorrectaElement) */
+      console.log(`[data-imagen="${imagenCorrecta}"]`)
+      console.log(imagenCorrectaElement)
       imagenCorrectaElement.src = "./Tepertenecex.png";
     }
     else{
@@ -201,9 +201,9 @@ function App() {
       })
     }
     }
-  const handleCandidato = (id,candidatoSeleccionado, imagenSeleccionada) => {
-/*     console.log(candidatoSeleccionado, imagenSeleccionada)
-    console.log(numCorrecto, imagenCorrecta) */
+  const handleCandidato = (candidatoSeleccionado, imagenSeleccionada) => {
+    console.log(candidatoSeleccionado, imagenSeleccionada)
+    console.log(numCorrecto, imagenCorrecta)
     if(candidatoSeleccionado.nombre === numCorrecto.nombre && imagenSeleccionada.nombre === imagenCorrecta.nombre){
       setCandidatoOk(true)
       console.log('correcto')
@@ -212,14 +212,13 @@ function App() {
         title: 'No olvides marcar el partido!',
         text: 'Estas a un paso de lograrlo!',
       })
-      /* console.log(`#${imagenCorrecta.nombre}${numCorrecto.nombre}`) */
-      const numCorrectaElement = document.querySelector(`#${imagenCorrecta.nombre}${numCorrecto.nombre} div img`);
-/*       console.log(`[data-imagen="${numCorrecto.nombre}"]`)
-      console.log(numCorrectaElement) */
+      const numCorrectaElement = document.querySelector(`#${numCorrecto.nombre}`);
+      console.log(`[data-imagen="${numCorrecto.nombre}"]`)
+      console.log(numCorrectaElement)
       numCorrectaElement.src = "./6Marcado.png";
     }
     else{
-      /* console.log('incorrecto') */
+      console.log('incorrecto')
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -228,20 +227,9 @@ function App() {
     }
     }
 
-    useEffect(() => {
-      Swal.fire({
-        title: 'Recuerda votar así!',
-        /* text: 'Modal with a custom image.', */
-        imageUrl: './votar2.png',
-        imageWidth: 350,
-        imageHeight: 476,
-        imageAlt: 'Custom image',
-      })
-    },[])
-
   useEffect(() => {
 
-      /* console.log(candidatoOk, paridoOk) */
+      console.log(candidatoOk, paridoOk)
   if(candidatoOk && paridoOk){
     Swal.fire({
       title: 'Genial!',
@@ -256,7 +244,7 @@ function App() {
       confirmButtonText: '¿Jugar otra vez?',
       cancelButtonText: 'Salir'
     }).then((result) => {
-      /* console.log(result) */
+      console.log(result)
       if (result.isConfirmed) {
         Swal.fire(
           'Empezemos de nuevo!',
@@ -264,13 +252,13 @@ function App() {
         setCandidatoOk(null)
         setPartidoOk(null)
         const imagenCorrectaElement = document.querySelector(`#${imagenCorrecta.nombre}`);
-/*         console.log(`[data-imagen="${imagenCorrecta.nombre}"]`)
-        console.log(imagenCorrectaElement) */
+        console.log(`[data-imagen="${imagenCorrecta.nombre}"]`)
+        console.log(imagenCorrectaElement)
         imagenCorrectaElement.src = "./Tepertenece.png";
         
-        const numCorrectaElement = document.querySelector(`#${imagenCorrecta.nombre}${numCorrecto.nombre} div img`);
-/*         console.log(`[data-imagen="${numCorrecto.nombre}"]`)
-        console.log(numCorrectaElement) */
+        const numCorrectaElement = document.querySelector(`#${numCorrecto.nombre}`);
+        console.log(`[data-imagen="${numCorrecto.nombre}"]`)
+        console.log(numCorrectaElement)
         numCorrectaElement.src = "./6.png";
 
       }else{
@@ -286,10 +274,10 @@ function App() {
       <h1 className="font-extrabold text-3xl max-md:text-sm">VOTO PARA CONCEJO MUNICIPAL DE</h1>
       <h1 className="font-bold text-3xl max-md:text-sm  ">MEDELLIN - ANTIOQUIA</h1>
       <h1 className="font-extrabold text-3xl text-[#BA3330] mb-10 max-md:text-sm">MARCAR MÁS DE UNA LISTA ANULA EL VOTO</h1>
-      <div className="imagenes flex flex-col flex-wrap mia justify-between mt-16 w-screen">
+      <div className="imagenes flex flex-col flex-wrap mia justify-between mt-16">
         
         {imagenes.map((imagen,index) => (
-          <div key={imagen.nombre} className="flex border-4 border-black mb-14 p-[0.5vw] w-[30vw] max-md:w-[90vw] max-w-fit">
+          <div key={imagen.nombre} className="flex border-4 border-black mb-14 p-[0.5vw] w-[30vw] max-md:w-[100vw]">
             <div style={{width:"39%"}}>
               <button 
                 className={imagen.nombre === imagenCorrecta.nombre ? "correcta" : "incorrecta"}
@@ -300,7 +288,7 @@ function App() {
               </button>
             </div>
           
-{/*             <div style={{width:"61%"}} className="flex flex-wrap">
+            <div style={{width:"61%"}} className="flex flex-wrap">
             {index <2  && numeros2.map((numero2,index) => (
                 <button key={numero2.nombre}
                   className="correcta font-sans font-bold text-[1.4vw] border-2 border-black rounded-lg w-[3.26vw] h-[1.9vw] m-[0.1vw] max-md:w-[8.6vw] max-md:text-[4vw] max-md:h-[6vw] max-md:m-[0.5vw] max-md:rounded-base " 
@@ -321,23 +309,21 @@ function App() {
                   </div>
                 </button>
                ))}
+            </div>
+
+
+            {/* <div style={{width:"61%"}} className="flex flex-wrap">
+            {index !==8 &&  index !==10 &&  index !==13 && candidatos.map((candidato) => (
+                <button
+                  className="font-sans font-bold text-[1.4vw] border-2 border-black rounded-lg w-[3.26vw] h-[1.9vw] m-[0.1vw]
+                              max-md:w-[8.6vw] max-md:text-[4vw] max-md:h-[6vw] max-md:m-[0.5vw] max-md:rounded-base "
+                  onClick={() => handleCandidato(`${imagen.nombre}${candidato}`)}
+                  key={candidato}
+                  id={`${imagen.nombre}${candidato}`}>
+                  {candidato}
+                </button>
+              ))}
             </div> */}
-
-
-             <div style={{width:"61%"}} className="flex flex-wrap">
-              {index !==4 &&  index !==5 &&  index !==15 && numeros.map((numero) => (
-                  <button
-                    className="font-sans font-bold text-[1.4vw] border-2 border-black rounded-lg w-[3.26vw] h-[1.9vw] m-[0.1vw]
-                                max-md:w-[8.6vw] max-md:text-[4vw] max-md:h-[6vw] max-md:m-[0.5vw] max-md:rounded-base "
-                    onClick={() => handleCandidato(`${imagen.nombre}${numero.nombre}`,numero,imagen)}
-                    key={`${imagen.nombre}${numero.nombre}`}
-                    id={`${imagen.nombre}${numero.nombre}`}>
-                  <div >
-                    <img src={numero.imagen} alt={numero.nombre} style={{width:"100%"}} id={numero.nombre}/>
-                  </div>
-                  </button>
-                ))}
-            </div> 
 
 
           </div>
